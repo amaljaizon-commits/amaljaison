@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sakana — Japanese Kitchen</title>
+  <meta name="description" content="Sakana is a cozy Japanese restaurant serving sushi, ramen, and seasonal small plates." />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Inter:wght@400;600&display=swap)" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#faf7f2;
+      --paper:#fffdf8;
+      --ink:#1f2328;
+      --red:#b8483b;
+      --accent:#22303a;
+      --line:#e6e0d7;
+      --muted:#6b6f75;
+      --shadow: 0 8px 24px rgba(0,0,0,.07);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;line-height:1.6}
+    img{max-width:100%;height:auto;display:block}
+    a{color:var(--red);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(250,247,242,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;height:64px;
+    }
+    .logo{
+      display:flex;gap:12px;align-items:center;
+      font-weight:600;color:var(--accent);letter-spacing:.02em;
+    }
+    .seal{
+      width:34px;height:34px;border-radius:50%;
+      background:var(--red);color:#fff;display:grid;place-items:center;
+      font-family:"Noto Serif JP", serif;font-weight:600;
+      box-shadow:var(--shadow)
+    }
+    .menu{display:flex;gap:22px}
+    .menu a{color:var(--ink);font-weight:600}
+    .menu a:hover{color:var(--red)}
+    .hero{
+      display:grid;grid-template-columns:1.2fr 1fr;gap:28px;
+      padding:56px 20px 32px;align-items:center
+    }
+    .hero-card{
+      background:var(--paper);border:1px solid var(--line);border-radius:16px;
+      padding:28px;box-shadow:var(--shadow)
+    }
+    h1{
+      font-family:"Noto Serif JP", serif;font-weight:600;line-height:1.15;
+      margin:0 0 12px;font-size:40px;color:var(--accent)
+    }
+    .subtitle{color:var(--muted);margin-bottom:18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:12px 18px;border-radius:10px;font-weight:600;border:1px solid var(--red);transition:.15s;
+    }
+    .btn.primary{background:var(--red);color:#fff;border-color:var(--red)}
+    .btn.primary:hover{filter:brightness(.95)}
+    .btn.ghost{color:var(--red);background:transparent}
+    .hero-photo{
+      border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    section{padding:48px 0}
+    .section-title{
+      font-family:"Noto Serif JP", serif;font-weight:600;font-size:28px;color:var(--accent);
+      margin:0 0 18px
+    }
+    .grid-3{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+    }
+    .card{
+      background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)
+    }
+    .dish{
+      display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)
+    }
+    .dish:last-child{border-bottom:none}
+    .yen{white-space:nowrap;color:var(--accent);font-weight:600}
+    .muted{color:var(--muted);font-size:14px}
+    .gallery{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:10px
+    }
+    .gallery img{border-radius:10px;border:1px solid var(--line)}
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px
+    }
+    form{
+      background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)
+    }
+    label{display:block;font-weight:600;margin-top:12px}
+    input, select, textarea{
+      width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;
+      font:inherit
+    }
+    textarea{min-height:110px;resize:vertical}
+    .note{font-size:13px;color:var(--muted)}
+    footer{
+      margin-top:32px;border-top:1px solid var(--line);padding:22px 0;color:var(--muted)
+    }
+    .badge{
+      display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff
+    }
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .split{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .menu{display:none}
+      h1{font-size:32px}
+      .grid-3{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="seal">鮨</div>
+        <div>Sakana — Japanese Kitchen</div>
+      </div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reserve">Reservations</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-card">
+        <h1>Seasonal Japanese cooking, served simply</h1>
+        <div class="subtitle">Sushi, ramen, and small plates inspired by the markets of Tokyo and Osaka.</div>
+        <div class="cta">
+          <a class="btn primary" href="#reserve">Book a table</a>
+          <a class="btn ghost" href="#menu">View menu</a>
+        </div>
+        <div style="margin-top:14px">
+          <span class="badge">Open daily 11:30–22:00</span>
+          <span class="badge">Walk-ins welcome</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- Replace with your own image URLs -->
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1600&auto=format&fit=crop)" alt="Assorted sushi on a wooden platter">
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Sakana</h2>
+      <div class="split">
+        <div class="card">
+          <p>We’re a neighborhood spot focused on freshness and balance. Our chefs prepare fish delivered daily, handmade noodles, and seasonal vegetables with a light touch.</p>
+          <p class="muted">Address: 123 Market Street, Your City • +1 (555) 014-8899</p>
+        </div>
+        <div class="card">
+          <strong>Kitchen notes</strong>
+          <ul>
+            <li>Vegetarian and gluten-free options available.</li>
+            <li>We serve responsibly sourced seafood.</li>
+            <li>Bar seating for solo diners and omakase on weekends.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <h2 class="section-title">Menu</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Sushi</h3>
+          <div class="dish">
+            <div>
+              Salmon Nigiri
+              <div class="muted">Two pieces, brushed soy</div>
+            </div>
+            <div class="yen">¥520</div>
+          </div>
+          <div class="dish">
+            <div>
+              Tuna Maki
+              <div class="muted">Hosomaki, line-caught</div>
+            </div>
+            <div class="yen">¥780</div>
+          </div>
+          <div class="dish">
+            <div>
+              Chef’s Omakase
+              <div class="muted">8 pieces, seasonal selection</div>
+            </div>
+            <div class="yen">¥3,600</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Bowls & Noodles</h3>
+          <div class="dish">
+            <div>
+              Shoyu Ramen
+              <div class="muted">Chicken broth, menma, egg</div>
+            </div>
+            <div class="yen">¥1,180</div>
+          </div>
+          <div class="dish">
+            <div>
+              Tonkotsu Ramen
+              <div class="muted">Pork broth, chashu, black garlic oil</div>
+            </div>
+            <div class="yen">¥1,320</div>
+          </div>
+          <div class="dish">
+            <div>
+              Tempura Udon
+              <div class="muted">Dashi broth, prawn tempura</div>
+            </div>
+            <div class="yen">¥1,240</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Small Plates</h3>
+          <div class="dish">
+            <div>
+              Agedashi Tofu
+              <div class="muted">Crispy tofu, tentsuyu, grated daikon</div>
+            </div>
+            <div class="yen">¥680</div>
+          </div>
+          <div class="dish">
+            <div>
+              Chicken Karaage
+              <div class="muted">Yuzu kosho mayo</div>
+            </div>
+            <div class="yen">¥820</div>
+          </div>
+          <div class="dish">
+            <div>
+              Cucumber Sunomono
+              <div class="muted">Rice vinegar, sesame</div>
+            </div>
+            <div class="yen">¥520</div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Prices include tax. A 10% service charge applies to parties of six or more.</p>
+    </section>
+
+    <section id="gallery">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop)" alt="Ramen bowl">
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1559333086-34b1b38a1a9a?q=80&w=800&auto=format&fit=crop)" alt="Sushi chef torching nigiri">
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1604908554049-8e40e0f2e3e0?q=80&w=800&auto=format&fit=crop)" alt="Tempura plate">
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=800&auto=format&fit=crop)" alt="Japanese tea set">
+      </div>
+    </section>
+
+    <section id="reserve">
+      <h2 class="section-title">Reservations</h2>
+      <div class="split">
+        <form onsubmit="event.preventDefault(); handleSubmit();">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="+1 555 014 8899" required />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="date">Date</label>
+              <input id="date" type="date" required />
+            </div>
+            <div>
+              <label for="time">Time</label>
+              <input id="time" type="time" required />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="guests">Guests</label>
+              <select id="guests" required>
+                <option value="">Select</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8+</option>
+              </select>
+            </div>
+            <div>
+              <label for="seating">Seating</label>
+              <select id="seating">
+                <option>Dining room</option>
+                <option>Counter (bar)</option>
+                <option>Patio</option>
+              </select>
+            </div>
+          </div>
+          <label for="notes">Notes</label>
+          <textarea id="notes" placeholder="Allergies, high chair, occasion…"></textarea>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
+            <button class="btn primary" type="submit">Request reservation</button>
+            <span class="note">We’ll confirm by SMS within 10 minutes.</span>
+          </div>
+        </form>
+
+        <div class="card">
+          <strong>Find us</strong>
+          <p>123 Market Street, Your City 10010</p>
+          <p>Weekdays: 11:30–15:00, 17:30–22:00<br/>Weekends: 11:30–22:00</p>
+          <p><a href="tel:+15550148899">+1 (555) 014-8899</a> • <a href="mailto:hello@sakana.example">hello@sakana.example</a></p>
+          <div style="height:220px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#eef2f4;display:grid;place-items:center;color:#556">
+            Map placeholder — embed your map here
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>© <span id="y"></span> Sakana. All rights reserved.</div>
+      <div>
+        <a href="#">Instagram</a> ·
+        <a href="#">TikTok</a> ·
+        <a href="#">Newsletter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple fake submit
+    function handleSubmit(){
+      const name = document.getElementById('name').value || 'Guest';
+      alert('Thanks, ' + name + '! Your reservation request has been received. We will text you shortly.');
+    }
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Optional: set min date to today
+    const d = document.getElementById('date');
+    if(d){
+      const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+      const today = new Date(Date.now() - tzoffset).toISOString().split('T')[0];
+      d.min = today;
+    }
+  </script>
+</body>
+</html>
